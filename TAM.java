@@ -40,6 +40,8 @@ public class TAM {
 
         displayGrid(gridHeight, gridWidth, grid); // display grid
 
+        format();
+
         numberGen(gridHeight, gridWidth, grid);
 
         // spacer
@@ -123,16 +125,17 @@ public class TAM {
     public static void numberGen(int tempGH, int tempGW, char[][] tempGrid){
         for(int i = 0; i < tempGH; i++){
             for(int l = 0; l < tempGW; l++){
-                // adjacent(i, l, tempGrid);
+                System.out.print(adjacent(i, l, tempGrid) + " ");
             }
+            System.out.println();
         }
     }
 
-    public static void adjacent(int x, int y , char[][] arr){
+    public static int adjacent(int x, int y , char[][] arr){
         int adj = 0;
-        for (int dx = (x > 0 ? -1 : 0); dx <= (x < arr.length ? 1 : 0); ++dx)
+        for (int dx = (x > 0 ? -1 : 0); dx < (x < arr.length ? 1 : 0); dx++)
         {
-            for (int dy = (y > 0 ? -1 : 0); dy <= (y < arr[0].length ? 1 : 0); ++dy)
+            for (int dy = (y > 0 ? -1 : 0); dy < (y < arr[0].length ? 1 : 0); dy++)
             {
                 if (dx != 0 || dy != 0)
                 {
@@ -142,6 +145,7 @@ public class TAM {
                 }
             }
         }
+        return adj;
        
     }
     // format method for aesthetics/visuals
